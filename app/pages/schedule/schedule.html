@@ -7,12 +7,34 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>schedule</ion-title>
+    <ion-title>Schedule</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-list-header>Great River Region</ion-list-header>
+    <ion-item *ngFor="let event of eventsGrr">
+      {{event.start}} <br>
+      {{event.venue.name}}
+    </ion-item>
+  </ion-list>
 
+  <ion-list>
+    <ion-list-header>Iowa Region</ion-list-header>
+    <ion-item *ngFor="let event of eventsIowa">
+      {{event.start}} <br>
+      {{event.venue.name}}
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>Des Moines Valley Region</ion-list-header>
+    <ion-item *ngFor="let event of eventsDmvr">
+      {{event.start}} <br>
+      {{event.venue.name}}
+    </ion-item>
+  </ion-list>
 </ion-content>
