@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
 import { SoloClass } from '../classes/solo-class';
 
 /*
@@ -12,7 +10,7 @@ import { SoloClass } from '../classes/solo-class';
 @Injectable()
 export class PaxCalculator {
 
-  constructor(private http: Http) {}
+  constructor() {}
 
   calculatePaxTime(rawTime: number, soloClass: SoloClass) {
     return rawTime * soloClass.paxModifier;
