@@ -1,0 +1,18 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>Registered Drivers</ion-list-header>
+    <ion-item *ngFor="let driver of drivers">
+      {{ driverLine1(driver) }} <br>
+      {{ driverLine2(driver) }}
+    </ion-item>
+  </ion-list>
+</ion-content>

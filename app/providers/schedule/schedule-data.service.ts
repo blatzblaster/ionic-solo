@@ -3,10 +3,11 @@ import { Headers, Http } from '@angular/http';
 import { Observable } from 'rxjs';
 
 export abstract class ApiScheduleDataService {
-    abstract getOrganizationSchedule(organizationId: string): Observable<ScheduleEvents[]>;
+    abstract getOrganizationSchedule(organizationId: string): Observable<ScheduleEvent[]>;
+    abstract getEventAttendees(eventId: string): Observable<ScheduleAssignment[]>;
 }
 
-export interface ScheduleEvents {
+export interface ScheduleEvent {
     organization: {
         uri: string;
         name: string;
@@ -37,14 +38,37 @@ export interface ScheduleEvents {
     name: string;
 }
 
-export interface ScheduleResponseWrapper {
-    response: {
-        events: ScheduleEvents[];
-    };
+export interface ScheduleAssignment {
+    vehicleNumber: number;
+    classModifier: string;
+    segment: string;
+    year: number;
+    lastName: string;
+    color: string;
+    firstName: string;
+    class: string;
+    model: string;
+    sponsor: string;
+    make: string;
+}
+
+export interface ApiResponseWrapper {
     recordset: {
         page: number;
         remaining: number;
         total: number;
+    };
+}
+
+export interface EventsResponseWrapper extends ApiResponseWrapper {
+    response: {
+        events: ScheduleEvent[];
+    };
+}
+
+export interface AssignmentsResponseWrapper extends ApiResponseWrapper {
+    response: {
+        assignments: ScheduleAssignment[];
     };
 }
 
@@ -53,9 +77,14 @@ export interface ScheduleResponseWrapper {
 export class ScheduleDataService implements ApiScheduleDataService {
     constructor(private http: Http) { }
 
-    getOrganizationSchedule(organizationId: string): Observable<ScheduleEvents[]> {
+    getOrganizationSchedule(organizationId: string): Observable<ScheduleEvent[]> {
         let url = `https://api.motorsportreg.com/rest/calendars/organization/${organizationId}.json`;
-        return this.get<ScheduleResponseWrapper>(url).map(resp => resp.response.events);
+        return this.get<EventsResponseWrapper>(url).map(resp => resp.response.events);
+    }
+
+    getEventAttendees(eventId: string): Observable<ScheduleAssignment[]> {
+         let url = `https://api.motorsportreg.com/rest/events/${eventId}/entrylist.json`;
+        return this.get<AssignmentsResponseWrapper>(url).map(resp => resp.response.assignments);
     }
 
     get<T>(url: string): Observable<T> {

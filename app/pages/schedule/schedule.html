@@ -1,9 +1,3 @@
-<!--
-  Generated template for the SchedulePage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -16,15 +10,17 @@
 <ion-content padding>
   <ion-list>
     <ion-list-header>Great River Region</ion-list-header>
-    <ion-item *ngFor="let event of eventsGrr">
-      {{event.start}} <br>
-      {{event.venue.name}}
+    <ion-item *ngFor="let eventItem of eventsGrr">
+      <div (click)="viewEvent(eventItem)">
+        {{eventItem.start}} <br>
+        {{eventItem.venue.name}}
+      </div>
     </ion-item>
   </ion-list>
 
   <ion-list>
     <ion-list-header>Iowa Region</ion-list-header>
-    <ion-item *ngFor="let event of eventsIowa">
+    <ion-item *ngFor="let event of eventsIowa" (click)="viewEvent(event)">
       {{event.start}} <br>
       {{event.venue.name}}
     </ion-item>
@@ -32,7 +28,7 @@
 
   <ion-list>
     <ion-list-header>Des Moines Valley Region</ion-list-header>
-    <ion-item *ngFor="let event of eventsDmvr">
+    <ion-item *ngFor="let event of eventsDmvr" (click)="viewEvent(event)">
       {{event.start}} <br>
       {{event.venue.name}}
     </ion-item>
