@@ -11,6 +11,52 @@
 
     ion-list {
         margin-bottom: 10px;
+
+        .item {
+            padding: 0;
+
+            .left {
+                position: absolute;
+                top: 0px;
+                left: 0;
+                bottom: 0;
+                width: 60px;
+                text-align: center;
+                display: flex;
+                align-items: center;
+            }
+
+            .right {
+                margin-left: 60px;
+            }
+        }
+
+        .type {
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 0 auto;
+            padding: 10px 9px;
+            border-radius: 20px;
+            background-color: gray;
+            color: white;
+
+            &.rx {
+                background-color: darkolivegreen;
+            }
+        }
+
+        .line {
+            margin-left: 5px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .heading {
+            display: inline-block;
+            font-weight: 600;
+        }
     }
     ion-list-header {
         background-color: #377df2;

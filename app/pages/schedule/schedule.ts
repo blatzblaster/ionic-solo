@@ -14,9 +14,7 @@ import { GoogleMapComponent, MapComponent } from '../../components/map.component
 export class SchedulePage {
   @ViewChild(GoogleMapComponent) mapComponent: MapComponent;
 
-  private eventsGrr: ScheduleEvent[];
-  private eventsIowa: ScheduleEvent[];
-  private eventsDmvr: ScheduleEvent[];
+  private events: ScheduleEvent[];
   private drivers: ScheduleAssignment[];
   constructor(private navCtrl: NavController,
     private _apiService: ApiScheduleDataService) {
@@ -33,9 +31,7 @@ export class SchedulePage {
     let dmvr = this._apiService.getOrganizationSchedule('241F05F5-F073-A014-D9ACF01391D132F9');
 
     Observable.forkJoin<[ScheduleEvent[], ScheduleEvent[], ScheduleEvent[]]>([grr, iowa, dmvr]).subscribe((events) => {
-      this.eventsGrr = events[0];
-      this.eventsIowa = events[1];
-      this.eventsDmvr = events[2];
+      this.events = this.sortScheduleBy(events[0].concat(events[1], events[2]), 'start');
     });
   }
 
@@ -46,6 +42,23 @@ export class SchedulePage {
 
   viewEvent(eventItem: ScheduleEvent) {
     this.navCtrl.push(ScheduleDetailPage, { eventItem: eventItem });
+  }
+
+  sortScheduleBy(list: ScheduleEvent[], sortBy: string) {
+    return list.sort((a, b) => {
+        return a[sortBy] >= b[sortBy] ? 1 : -1;
+    });
+  }
+
+  eventType(eventItem: ScheduleEvent) {
+    switch (eventItem.type) {
+      case 'RallyCross':
+        return 'RX';
+      case 'Autocross/Solo':
+        return 'AX';
+      default:
+        return 'AX';
+    }
   }
 
 }
