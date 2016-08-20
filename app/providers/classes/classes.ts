@@ -67,7 +67,7 @@ export class Classes {
       { abbreviation: "EM", name: "E Modified", paxModifier: 0.920 },
       { abbreviation: "FM", name: "F Modified", paxModifier: 0.926 },
       { abbreviation: "FSAE", name: "Formula SAE", paxModifier: 0.982 },
-      { abbreviation: "KM", name: "", paxModifier: 0.954 },
+      { abbreviation: "KM", name: "Kart Modified", paxModifier: 0.954 },
       { abbreviation: "JA", name: "Junior A", paxModifier: 0.878 },
       { abbreviation: "JB", name: "Junior B", paxModifier: 0.842 },
       { abbreviation: "JC", name: "Junior C", paxModifier: 0.734 }

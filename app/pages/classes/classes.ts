@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { AlertController } from 'ionic-angular';
+import { SoloClass } from '../../providers/classes/solo-class';
+import { Classes } from '../../providers/classes/classes';
 
 /*
   Generated class for the ClassesPage page.
@@ -9,11 +11,16 @@ import { NavController } from 'ionic-angular';
 */
 @Component({
   templateUrl: 'build/pages/classes/classes.html',
+  providers: [Classes]
 })
-export class ClassesPage {
+export class ClassesPage implements OnInit {
+  allClasses: SoloClass[];
 
-  constructor(private navCtrl: NavController) {
+  constructor(private classes: Classes) {
+  }
 
+  ngOnInit() {
+    this.allClasses = this.classes.allClasses;
   }
 
 }

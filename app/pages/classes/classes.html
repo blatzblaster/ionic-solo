@@ -7,12 +7,17 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>classes</ion-title>
+    <ion-title>SCCA Solo Classes</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item *ngFor="let soloClass of allClasses">
+      <h2>{{soloClass.abbreviation}} - {{soloClass.name}}</h2>
+      <h3>Pax Modifier: {{soloClass.paxModifier}}</h3>
+    </ion-item>
+  </ion-list>
 </ion-content>
