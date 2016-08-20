@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Platform, ionicBootstrap} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
+import {GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core';
 
 import { ApiScheduleDataService, ScheduleDataService } from './providers/schedule/schedule-data.service';
 import {TabsPage} from './pages/tabs/tabs';
@@ -25,5 +26,6 @@ export class MyApp {
 }
 
 ionicBootstrap(MyApp, [
-  { provide: ApiScheduleDataService, useClass: ScheduleDataService }
+  { provide: ApiScheduleDataService, useClass: ScheduleDataService },
+  GOOGLE_MAPS_PROVIDERS
 ]);

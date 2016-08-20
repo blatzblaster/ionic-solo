@@ -1,14 +1,19 @@
 import { Component, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NavController, NavParams } from 'ionic-angular';
+import { GOOGLE_MAPS_DIRECTIVES, GOOGLE_MAPS_PROVIDERS } from 'angular2-google-maps/core';
 
 import { ApiScheduleDataService, ScheduleAssignment, ScheduleEvent } from '../../providers/schedule/schedule-data.service';
 import { ScheduleDetailPage } from './schedule-detail';
+import { GoogleMapComponent, MapComponent } from '../../components/map.component';
 
 @Component({
-  templateUrl: 'build/pages/schedule/schedule.html'
+  templateUrl: 'build/pages/schedule/schedule.html',
+  directives: [GOOGLE_MAPS_DIRECTIVES, GoogleMapComponent]
 })
 export class SchedulePage {
+  @ViewChild(GoogleMapComponent) mapComponent: MapComponent;
+
   private eventsGrr: ScheduleEvent[];
   private eventsIowa: ScheduleEvent[];
   private eventsDmvr: ScheduleEvent[];
@@ -32,6 +37,11 @@ export class SchedulePage {
       this.eventsIowa = events[1];
       this.eventsDmvr = events[2];
     });
+  }
+
+  onMapLoaded() {
+    this.mapComponent.setCenter(42.47, -90.67);
+    this.mapComponent.setZoom(6);
   }
 
   viewEvent(eventItem: ScheduleEvent) {

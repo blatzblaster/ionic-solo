@@ -1,3 +1,19 @@
-.schedule {
+.schedulePage {
+    sebm-google-map {
+        position: relative;
+        width: 100%;
+        height: 65%;
 
+        .sebm-google-map-container-inner {
+            border-bottom: 1px solid #c8c7cc
+        }
+    }
+
+    ion-list {
+        margin-bottom: 10px;
+    }
+    ion-list-header {
+        background-color: #377df2;
+        color: white;
+    }
 }
