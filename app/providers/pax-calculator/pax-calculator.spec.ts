@@ -35,8 +35,8 @@ describe('Pax Calculator Provider', () => {
             paxModifier: 1
         };
 
-        expect(paxCalculator.convertPaxTime(1, fooClass, barClass)).toBe(2);
-        expect(paxCalculator.convertPaxTime(1, barClass, fooClass)).toBe(0.5);
+        expect(paxCalculator.convertPaxTime(1, barClass)).toBe(1);
+        expect(paxCalculator.convertPaxTime(1, fooClass)).toBe(2);
     }));
 
     it('Converts raw time', inject([PaxCalculator], (paxCalculator: PaxCalculator) => {

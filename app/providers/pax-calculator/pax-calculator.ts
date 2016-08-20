@@ -20,7 +20,7 @@ export class PaxCalculator {
     return this.calculatePaxTime(rawTime, fromClass) / toClass.paxModifier;
   }
 
-  convertPaxTime(paxTime: number, fromClass: SoloClass, toClass: SoloClass) {
-    return this.calculatePaxTime(paxTime / fromClass.paxModifier, toClass);
+  convertPaxTime(paxTime: number, toClass: SoloClass) {
+    return paxTime / toClass.paxModifier;
   }
 }

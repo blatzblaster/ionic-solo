@@ -7,12 +7,33 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>convert</ion-title>
+    <ion-title>Convert between classes</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item>
+      <ion-label>Time to convert:</ion-label>
+      <ion-input item-right type="number" [(ngModel)]="entryTime"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Convert from class:</ion-label>
+      <ion-select [(ngModel)]="fromClass" [alertOptions]="selectClassOptions">
+        <ion-option *ngFor="let soloClass of soloClasses" [value]="soloClass.abbreviation">{{soloClass.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Convert to class:</ion-label>
+      <ion-select [(ngModel)]="toClass" [alertOptions]="selectClassOptions">
+        <ion-option *ngFor="let soloClass of soloClasses" [value]="soloClass.abbreviation">{{soloClass.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <button block (click)="convertFromPaxTime()">Convert PAX Time</button>
+      <button block (click)="convertFromRawTime()">Convert Raw Time</button>
+    </ion-item>
+  </ion-list>
 </ion-content>

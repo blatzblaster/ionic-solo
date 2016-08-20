@@ -14,10 +14,14 @@ export class Classes {
   allClasses: SoloClass[];
 
   constructor(private http: Http) {
-
+    this._initializeClasses();
   }
 
-  initializeClasses() {
+  getByAbbreviation(abbreviation: string) {
+    return this.allClasses.filter(value => value.abbreviation === abbreviation)[0];
+  }
+
+  private _initializeClasses() {
     this.allClasses = [
       { abbreviation: "SS", name: "Super Street", paxModifier: 0.835 },
       { abbreviation: "AS", name: "A Street", paxModifier: 0.833 },
