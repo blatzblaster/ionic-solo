@@ -61,6 +61,10 @@ export class SchedulePage {
     return new Date(dateString).toLocaleDateString([],{ month: "long", day: "numeric"});
   }
 
+  markerUrl(eventItem: ScheduleEvent) {
+    return this.eventType(eventItem) === "AX" ? 'build/img/gray.png' : 'build/img/olivegreen.png';
+  }
+
   eventType(eventItem: ScheduleEvent) {
     switch (eventItem.type) {
       case 'RallyCross':

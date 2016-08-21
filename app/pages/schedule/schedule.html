@@ -11,7 +11,11 @@
   <sebm-google-map>
     <google-map-component (mapLoaded)="onMapLoaded()"></google-map-component>
     <div *ngFor="let eventItem of events; let i=index">
-      <sebm-google-map-marker [latitude]="eventItem.venue.geo.coordinates[1]" [longitude]="eventItem.venue.geo.coordinates[0]"></sebm-google-map-marker>
+      <sebm-google-map-marker
+        [latitude]="eventItem.venue.geo.coordinates[1]"
+        [longitude]="eventItem.venue.geo.coordinates[0]"
+        [iconUrl]="{ url: markerUrl(eventItem) }">
+      </sebm-google-map-marker>
     </div>
   </sebm-google-map>
 
