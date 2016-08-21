@@ -14,7 +14,8 @@
       <sebm-google-map-marker
         [latitude]="eventItem.venue.geo.coordinates[1]"
         [longitude]="eventItem.venue.geo.coordinates[0]"
-        [iconUrl]="{ url: markerUrl(eventItem) }">
+        [iconUrl]="{ url: markerUrl(eventItem) }"
+        (markerClick)="viewEvent(eventItem)">
       </sebm-google-map-marker>
     </div>
   </sebm-google-map>

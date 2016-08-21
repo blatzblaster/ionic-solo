@@ -33,7 +33,7 @@ export class SchedulePage {
     let dmvr = this._apiService.getOrganizationSchedule('241F05F5-F073-A014-D9ACF01391D132F9');
     let milw = this._apiService.getOrganizationSchedule('4BA9992B-0D5E-4BB9-FFDBB58CCEE3931E');
     let cir = this._apiService.getOrganizationSchedule('FB77E264-A7ED-387A-581F7D73295D5B69');
-    Observable.forkJoin<[ScheduleEvent[], ScheduleEvent[], ScheduleEvent[], ScheduleEvent[], ScheduleEvent[]]>([grr, iowa, dmvr, milw, cir]).subscribe((events) => {
+    Observable.forkJoin<[ScheduleEvent[]]>([grr, iowa, dmvr, milw, cir]).subscribe((events) => {
       // Sort initially by start date
       this.events = events[0].concat(events[1], events[2], events[3], events[4]).sort((a, b) => {
           return a.start >= b.start ? 1 : -1;

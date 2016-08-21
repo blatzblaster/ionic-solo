@@ -31,6 +31,9 @@ export class ScheduleDetailPage {
 
   loadDrivers() {
     this._apiService.getEventAttendees(this.eventItem.id).subscribe((drivers) => {
+      if (!drivers)
+        return;
+
       this.drivers = drivers.sort((a, b) => {
           return a.class > b.class ? 1 : -1;
       });
