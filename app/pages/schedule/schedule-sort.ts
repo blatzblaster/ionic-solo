@@ -31,8 +31,8 @@ export class ScheduleSortPopover {
         { fieldName: 'organization.name', displayName: 'Region Asc', direction: SortDirection.ASC },
         { fieldName: 'organization.name', displayName: 'Region Desc', direction: SortDirection.DESC },
         { fieldName: 'type', displayName: 'Type Asc', direction: SortDirection.ASC },
-        { fieldName: 'type', displayName: 'Type Desc', direction: SortDirection.DESC },
-    ]
+        { fieldName: 'type', displayName: 'Type Desc', direction: SortDirection.DESC }
+    ];
 
     constructor(private viewCtrl: ViewController, private navParams: NavParams) {}
 
