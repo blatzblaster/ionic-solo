@@ -16,15 +16,19 @@
   </sebm-google-map>
 
   <ion-list>
-    <ion-list-header>Events</ion-list-header>
+    <ion-list-header>Events
+      <ion-icon name="md-reorder" (click)="showSortMenu($event)" (itemSelected)="sortScheduleBy($event)"></ion-icon>
+    </ion-list-header>
     <ion-item *ngFor="let eventItem of events">
       <div (click)="viewEvent(eventItem)">
         <div class="left">
           <div class="type" [class.rx]="eventType(eventItem) === 'RX'">{{ eventType(eventItem) }}</div>
         </div>
         <div class="right">
-          <div class="heading line">{{eventItem.organization.name}}</div>
-          <div class="line">{{eventItem.start}}</div>
+          <div class="heading line">
+            {{eventItem.organization.name}}
+          </div>
+          <div class="line">{{ formatDate(eventItem.start) }}</div>
           <div class="line">{{eventItem.venue.name}}</div>
         </div>
       </div>

@@ -1,11 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, PopoverController } from 'ionic-angular';
 import { GOOGLE_MAPS_DIRECTIVES, GOOGLE_MAPS_PROVIDERS } from 'angular2-google-maps/core';
 
 import { ApiScheduleDataService, ScheduleAssignment, ScheduleEvent } from '../../providers/schedule/schedule-data.service';
 import { ScheduleDetailPage } from './schedule-detail';
 import { GoogleMapComponent, MapComponent } from '../../components/map.component';
+import { ScheduleSortPopover } from './schedule-sort';
 
 @Component({
   templateUrl: 'build/pages/schedule/schedule.html',
@@ -17,7 +18,8 @@ export class SchedulePage {
   private events: ScheduleEvent[];
   private drivers: ScheduleAssignment[];
   constructor(private navCtrl: NavController,
-    private _apiService: ApiScheduleDataService) {
+    private _apiService: ApiScheduleDataService,
+    private popoverCtrl: PopoverController) {
 
    }
 
@@ -29,9 +31,13 @@ export class SchedulePage {
     let grr = this._apiService.getOrganizationSchedule('85F4C7CC-1D72-822B-79115982FA66F935');
     let iowa = this._apiService.getOrganizationSchedule('A183CF63-A4FA-43EF-FFA5531834256DB8');
     let dmvr = this._apiService.getOrganizationSchedule('241F05F5-F073-A014-D9ACF01391D132F9');
-
-    Observable.forkJoin<[ScheduleEvent[], ScheduleEvent[], ScheduleEvent[]]>([grr, iowa, dmvr]).subscribe((events) => {
-      this.events = this.sortScheduleBy(events[0].concat(events[1], events[2]), 'start');
+    let milw = this._apiService.getOrganizationSchedule('4BA9992B-0D5E-4BB9-FFDBB58CCEE3931E');
+    let cir = this._apiService.getOrganizationSchedule('FB77E264-A7ED-387A-581F7D73295D5B69');
+    Observable.forkJoin<[ScheduleEvent[], ScheduleEvent[], ScheduleEvent[], ScheduleEvent[], ScheduleEvent[]]>([grr, iowa, dmvr, milw, cir]).subscribe((events) => {
+      // Sort initially by start date
+      this.events = events[0].concat(events[1], events[2], events[3], events[4]).sort((a, b) => {
+          return a.start >= b.start ? 1 : -1;
+      });
     });
   }
 
@@ -44,10 +50,15 @@ export class SchedulePage {
     this.navCtrl.push(ScheduleDetailPage, { eventItem: eventItem });
   }
 
-  sortScheduleBy(list: ScheduleEvent[], sortBy: string) {
-    return list.sort((a, b) => {
-        return a[sortBy] >= b[sortBy] ? 1 : -1;
+  showSortMenu(myEvent: Event) {
+    let popover = this.popoverCtrl.create(ScheduleSortPopover, { items: this.events });
+    popover.present({
+      ev: myEvent
     });
+  }
+
+  formatDate(dateString: string) {
+    return new Date(dateString).toLocaleDateString([],{ month: "long", day: "numeric"});
   }
 
   eventType(eventItem: ScheduleEvent) {

@@ -51,6 +51,10 @@
             margin-left: 5px;
             color: #333;
             font-size: 14px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
         }
 
         .heading {
@@ -61,5 +65,12 @@
     ion-list-header {
         background-color: #377df2;
         color: white;
+
+        ion-icon {
+            position: absolute;
+            right: 14px;
+            top: 6px;
+            font-size: 25px;
+        }
     }
 }
