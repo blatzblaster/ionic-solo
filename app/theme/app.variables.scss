@@ -33,3 +33,10 @@ $colors: (
   dark:       #222,
   favorite:   #69BB7B
 );
+
+// Mixins/Variables
+
+@mixin force3dRender() {
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+}

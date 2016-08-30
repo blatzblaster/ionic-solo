@@ -11,6 +11,7 @@
 
     ion-list {
         margin-bottom: 10px;
+        @include force3dRender();
 
         .item {
             padding: 0;
