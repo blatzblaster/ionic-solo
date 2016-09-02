@@ -62,7 +62,7 @@ export class SchedulePage {
   }
 
   markerUrl(eventItem: ScheduleEvent) {
-    return this.eventType(eventItem) === 'AX' ? 'build/img/gray.png' : 'build/img/olivegreen.png';
+    return this.eventType(eventItem) === 'AX' ? 'build/img/autox-marker.png' : 'build/img/rallyx-marker.png';
   }
 
   eventType(eventItem: ScheduleEvent) {
