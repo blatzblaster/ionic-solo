@@ -40,3 +40,13 @@ $colors: (
   -webkit-transform: translateZ(0);
   -webkit-backface-visibility: hidden;
 }
+
+$gray-border: #c8c7cc;
+$blue-500: #377df2;
+
+
+// Global Styles
+ion-page ion-list-header {
+  background-color: $blue-500;
+  color: white;
+}

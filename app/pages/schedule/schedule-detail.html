@@ -7,12 +7,20 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-list>
+<ion-content>
+  <div class="desc">
+    <ion-list-header>Description</ion-list-header>
+    <div class="desc-body" [innerHTML]="eventItem.description"></div>
+  </div>
+
+  <div class="drivers">
     <ion-list-header>Registered Drivers</ion-list-header>
-    <ion-item *ngFor="let driver of drivers">
-      {{ driverLine1(driver) }} <br>
-      {{ driverLine2(driver) }}
-    </ion-item>
-  </ion-list>
+    <ion-list *ngIf="driversLoaded">
+      <ion-item *ngFor="let driver of drivers"  >
+        {{ driverLine1(driver) }} <br>
+        {{ driverLine2(driver) }}
+      </ion-item>
+    </ion-list>
+    <ion-spinner *ngIf="!driversLoaded"></ion-spinner>
+  </div>
 </ion-content>

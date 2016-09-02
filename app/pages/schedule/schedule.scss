@@ -63,15 +63,10 @@
             font-weight: 600;
         }
     }
-    ion-list-header {
-        background-color: #377df2;
-        color: white;
-
-        ion-icon {
-            position: absolute;
-            right: 14px;
-            top: 6px;
-            font-size: 25px;
-        }
+    ion-list-header ion-icon {
+        position: absolute;
+        right: 14px;
+        top: 6px;
+        font-size: 25px;
     }
 }

@@ -11,6 +11,7 @@ export class ScheduleDetailPage {
   @Input() eventItem: ScheduleEvent;
 
   private drivers: ScheduleAssignment[];
+  private driversLoaded: boolean;
   constructor(private navCtrl: NavController,
     private _apiService: ApiScheduleDataService,
     private _navParams: NavParams) {
@@ -37,6 +38,8 @@ export class ScheduleDetailPage {
       this.drivers = drivers.sort((a, b) => {
           return a.class > b.class ? 1 : -1;
       });
+
+      this.driversLoaded = true;
     });
   }
 
