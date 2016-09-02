@@ -33,7 +33,7 @@
           <div class="heading line">
             {{eventItem.organization.name}}
           </div>
-          <div class="line">{{ formatDate(eventItem.start) }}</div>
+          <div class="line">{{ _dateSvc.toMonthAndDay(eventItem.start) }}</div>
           <div class="line">{{eventItem.venue.name}}</div>
         </div>
       </div>

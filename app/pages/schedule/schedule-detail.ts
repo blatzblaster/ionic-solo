@@ -3,9 +3,11 @@ import { Observable } from 'rxjs';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { ApiScheduleDataService, ScheduleAssignment, ScheduleEvent } from '../../providers/schedule/schedule-data.service';
+import { DateService } from '../../utilities/date-service';
 
 @Component({
-  templateUrl: 'build/pages/schedule/schedule-detail.html'
+  templateUrl: 'build/pages/schedule/schedule-detail.html',
+  providers: [DateService]
 })
 export class ScheduleDetailPage {
   @Input() eventItem: ScheduleEvent;
@@ -14,7 +16,8 @@ export class ScheduleDetailPage {
   private driversLoaded: boolean;
   constructor(private navCtrl: NavController,
     private _apiService: ApiScheduleDataService,
-    private _navParams: NavParams) {
+    private _navParams: NavParams,
+    private _dateSvc: DateService) {
         this.eventItem = _navParams.get('eventItem');
   }
 

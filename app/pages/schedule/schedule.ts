@@ -7,10 +7,12 @@ import { ApiScheduleDataService, ScheduleAssignment, ScheduleEvent } from '../..
 import { ScheduleDetailPage } from './schedule-detail';
 import { GoogleMapComponent, MapComponent } from '../../components/map.component';
 import { ScheduleSortPopover } from './schedule-sort';
+import { DateService } from '../../utilities/date-service';
 
 @Component({
   templateUrl: 'build/pages/schedule/schedule.html',
-  directives: [GOOGLE_MAPS_DIRECTIVES, GoogleMapComponent]
+  directives: [GOOGLE_MAPS_DIRECTIVES, GoogleMapComponent],
+  providers: [DateService]
 })
 export class SchedulePage {
   @ViewChild(GoogleMapComponent) mapComponent: MapComponent;
@@ -19,9 +21,10 @@ export class SchedulePage {
   private drivers: ScheduleAssignment[];
   constructor(private navCtrl: NavController,
     private _apiService: ApiScheduleDataService,
-    private popoverCtrl: PopoverController) {
+    private popoverCtrl: PopoverController,
+    private _dateSvc: DateService) {
 
-   }
+  }
 
   ionViewLoaded() {
     this.loadSchedule();
@@ -55,10 +58,6 @@ export class SchedulePage {
     popover.present({
       ev: myEvent
     });
-  }
-
-  formatDate(dateString: string) {
-    return new Date(dateString).toLocaleDateString([], { month: 'long', day: 'numeric' });
   }
 
   markerUrl(eventItem: ScheduleEvent) {
