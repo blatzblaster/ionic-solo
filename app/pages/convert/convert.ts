@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { AlertController } from 'ionic-angular';
-import { SoloClass } from '../../providers/classes/solo-class';
-import { Classes } from '../../providers/classes/classes';
-import { PaxCalculator } from '../../providers/pax-calculator/pax-calculator';
+import { Component, OnInit } from "@angular/core";
+import { AlertController } from "ionic-angular";
+import { SoloClass } from "../../providers/classes/solo-class";
+import { Classes } from "../../providers/classes/classes";
+import { PaxCalculator } from "../../providers/pax-calculator/pax-calculator";
 
 /*
   Generated class for the ConvertPage page.
@@ -11,7 +11,7 @@ import { PaxCalculator } from '../../providers/pax-calculator/pax-calculator';
   Ionic pages and navigation.
 */
 @Component({
-  templateUrl: 'build/pages/convert/convert.html',
+  templateUrl: "build/pages/convert/convert.html",
   providers: [Classes, PaxCalculator]
 })
 export class ConvertPage implements OnInit {
@@ -28,7 +28,7 @@ export class ConvertPage implements OnInit {
 
   ngOnInit() {
     this.soloClasses = this.classes.allClasses;
-    this.selectClassOptions = { title: 'Select Class:' };
+    this.selectClassOptions = { title: "Select Class:" };
   }
 
   convertFromPaxTime() {

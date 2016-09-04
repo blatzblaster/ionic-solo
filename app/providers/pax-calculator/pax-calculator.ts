@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { SoloClass } from '../classes/solo-class';
+import { Injectable } from "@angular/core";
+import { SoloClass } from "../classes/solo-class";
 
 /*
   Generated class for the PaxCalculator provider.

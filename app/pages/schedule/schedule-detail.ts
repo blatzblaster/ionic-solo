@@ -1,13 +1,13 @@
-import { Component, Input, ViewChild } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, Input, ViewChild } from "@angular/core";
+import { NavController, NavParams } from "ionic-angular";
 
-import { ApiScheduleDataService, ScheduleAssignment, ScheduleEvent } from '../../providers/schedule/schedule-data.service';
-import { DateService } from '../../utilities/date-service';
-import { GOOGLE_MAPS_DIRECTIVES } from 'angular2-google-maps/core';
-import { GoogleMapComponent, MapComponent } from '../../components/map.component';
+import { ApiScheduleDataService, ScheduleAssignment, ScheduleEvent } from "../../providers/schedule/schedule-data.service";
+import { DateService } from "../../utilities/date-service";
+import { GOOGLE_MAPS_DIRECTIVES } from "angular2-google-maps/core";
+import { GoogleMapComponent, MapComponent } from "../../components/map.component";
 
 @Component({
-  templateUrl: 'build/pages/schedule/schedule-detail.html',
+  templateUrl: "build/pages/schedule/schedule-detail.html",
   directives: [GOOGLE_MAPS_DIRECTIVES, GoogleMapComponent],
   providers: [DateService]
 })
@@ -21,7 +21,7 @@ export class ScheduleDetailPage {
     private _apiService: ApiScheduleDataService,
     private _navParams: NavParams,
     private _dateSvc: DateService) {
-        this.eventItem = _navParams.get('eventItem');
+        this.eventItem = _navParams.get("eventItem");
   }
 
   ionViewLoaded() {

@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { GoogleMapsAPIWrapper } from 'angular2-google-maps/core';
-import { GoogleMap } from 'angular2-google-maps/core/services/google-maps-types';
+import { Component, EventEmitter, Output } from "@angular/core";
+import { GoogleMapsAPIWrapper } from "angular2-google-maps/core";
+import { GoogleMap } from "angular2-google-maps/core/services/google-maps-types";
 
 export abstract class MapComponent {
     mapLoaded: EventEmitter<{}>;
@@ -11,8 +11,8 @@ export abstract class MapComponent {
 
 
 @Component({
-  selector: 'google-map-component',
-  template: ''
+  selector: "google-map-component",
+  template: ""
 })
 export class GoogleMapComponent implements MapComponent {
     map: GoogleMap;
@@ -36,7 +36,7 @@ export class GoogleMapComponent implements MapComponent {
     }
 
     setSatelliteView() {
-        this.map.setOptions({mapTypeId: 'satellite'} as any);
+        this.map.setOptions({mapTypeId: "satellite"} as any);
     }
 }
 

@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
-import {ClassesPage} from '../classes/classes';
-import {ConvertPage} from '../convert/convert';
-import {SchedulePage} from '../schedule/schedule';
+import { Component } from "@angular/core";
+import { ClassesPage } from "../classes/classes";
+import { ConvertPage } from "../convert/convert";
+import { SchedulePage } from "../schedule/schedule";
 
 @Component({
-  templateUrl: 'build/pages/tabs/tabs.html'
+  templateUrl: "build/pages/tabs/tabs.html"
 })
 export class TabsPage {
 

@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { SoloClass } from './solo-class';
-import 'rxjs/add/operator/map';
+import { Injectable } from "@angular/core";
+import { Http } from "@angular/http";
+import { SoloClass } from "./solo-class";
+import "rxjs/add/operator/map";
 
 /*
   Generated class for the Classes provider.

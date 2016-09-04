@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { Observable } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { Http } from "@angular/http";
+import { Observable } from "rxjs";
 
 export abstract class ApiScheduleDataService {
     abstract getOrganizationSchedule(organizationId: string): Observable<ScheduleEvent[]>;

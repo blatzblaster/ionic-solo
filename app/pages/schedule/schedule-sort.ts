@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ViewController, NavParams } from 'ionic-angular';
+import { Component, Input, OnInit } from "@angular/core";
+import { ViewController, NavParams } from "ionic-angular";
 
-import { ScheduleEvent } from '../../providers/schedule/schedule-data.service';
+import { ScheduleEvent } from "../../providers/schedule/schedule-data.service";
 
 export enum SortDirection {
     ASC,
@@ -26,12 +26,12 @@ export class ScheduleSortPopover implements OnInit {
     @Input() items: ScheduleEvent[];
 
     private options: SortOption[] = [
-        { fieldName: 'start', displayName: 'Date Asc', direction: SortDirection.ASC },
-        { fieldName: 'start', displayName: 'Date Desc', direction: SortDirection.DESC },
-        { fieldName: 'organization.name', displayName: 'Region Asc', direction: SortDirection.ASC },
-        { fieldName: 'organization.name', displayName: 'Region Desc', direction: SortDirection.DESC },
-        { fieldName: 'type', displayName: 'Type Asc', direction: SortDirection.ASC },
-        { fieldName: 'type', displayName: 'Type Desc', direction: SortDirection.DESC }
+        { fieldName: "start", displayName: "Date Asc", direction: SortDirection.ASC },
+        { fieldName: "start", displayName: "Date Desc", direction: SortDirection.DESC },
+        { fieldName: "organization.name", displayName: "Region Asc", direction: SortDirection.ASC },
+        { fieldName: "organization.name", displayName: "Region Desc", direction: SortDirection.DESC },
+        { fieldName: "type", displayName: "Type Asc", direction: SortDirection.ASC },
+        { fieldName: "type", displayName: "Type Desc", direction: SortDirection.DESC }
     ];
 
     constructor(private viewCtrl: ViewController, private navParams: NavParams) {}
@@ -48,7 +48,7 @@ export class ScheduleSortPopover implements OnInit {
     }
 
     sortScheduleBy(sort: SortOption) {
-        let sortField = sort.fieldName.split('.');
+        let sortField = sort.fieldName.split(".");
         let sortedList = this.items.sort((a, b) => {
             if (sortField.length === 2)
                 return a[sortField[0]][sortField[1]] >= b[sortField[0]][sortField[1]] ? 1 : -1;
