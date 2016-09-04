@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from 'ionic-angular';
 import { SoloClass } from '../../providers/classes/solo-class';
 import { Classes } from '../../providers/classes/classes';
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ViewController, NavParams } from 'ionic-angular';
 
 import { ScheduleEvent } from '../../providers/schedule/schedule-data.service';
@@ -22,7 +22,7 @@ export interface SortOption {
     </ion-list>
   `
 })
-export class ScheduleSortPopover {
+export class ScheduleSortPopover implements OnInit {
     @Input() items: ScheduleEvent[];
 
     private options: SortOption[] = [

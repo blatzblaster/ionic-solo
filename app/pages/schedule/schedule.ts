@@ -1,9 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { NavController, NavParams, PopoverController } from 'ionic-angular';
-import { GOOGLE_MAPS_DIRECTIVES, GOOGLE_MAPS_PROVIDERS } from 'angular2-google-maps/core';
+import { NavController, PopoverController } from 'ionic-angular';
+import { GOOGLE_MAPS_DIRECTIVES } from 'angular2-google-maps/core';
 
-import { ApiScheduleDataService, ScheduleAssignment, ScheduleEvent } from '../../providers/schedule/schedule-data.service';
+import { ApiScheduleDataService, ScheduleEvent } from '../../providers/schedule/schedule-data.service';
 import { ScheduleDetailPage } from './schedule-detail';
 import { GoogleMapComponent, MapComponent } from '../../components/map.component';
 import { ScheduleSortPopover } from './schedule-sort';
@@ -18,7 +18,6 @@ export class SchedulePage {
   @ViewChild(GoogleMapComponent) mapComponent: MapComponent;
 
   private events: ScheduleEvent[];
-  private drivers: ScheduleAssignment[];
   constructor(private navCtrl: NavController,
     private _apiService: ApiScheduleDataService,
     private popoverCtrl: PopoverController,
