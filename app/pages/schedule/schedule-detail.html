@@ -9,7 +9,15 @@
 
 <ion-content>
 
- <div class="event">
+  <sebm-google-map>
+    <google-map-component (mapLoaded)="onMapLoaded()"></google-map-component>
+    <sebm-google-map-marker
+      [latitude]="eventItem.venue.geo.coordinates[1]"
+      [longitude]="eventItem.venue.geo.coordinates[0]">
+    </sebm-google-map-marker>
+  </sebm-google-map>
+
+ <div padding class="event">
     <ion-label>{{eventItem.organization.name}}</ion-label>
     <ion-label>{{ _dateSvc.toMonthAndDay(eventItem.start) }}</ion-label>
     <ion-label>{{eventItem.venue.name}}</ion-label>

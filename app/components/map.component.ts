@@ -1,11 +1,12 @@
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { GOOGLE_MAPS_DIRECTIVES, GoogleMapsAPIWrapper } from 'angular2-google-maps/core';
-import { GoogleMap, LatLng } from 'angular2-google-maps/core/services/google-maps-types';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { GoogleMapsAPIWrapper } from 'angular2-google-maps/core';
+import { GoogleMap } from 'angular2-google-maps/core/services/google-maps-types';
 
 export abstract class MapComponent {
     mapLoaded: EventEmitter<{}>;
     abstract setCenter(lat: number, lng: number): void;
     abstract setZoom(zoom: number): void;
+    abstract setSatelliteView(): void;
 }
 
 
@@ -21,6 +22,7 @@ export class GoogleMapComponent implements MapComponent {
         this._wrapper.getNativeMap().then((m) => {
             // implement your own logic
             this.map = m;
+            this.map.setOptions({zoomControl: false, streetViewControl: false});
             this.mapLoaded.emit({});
         });
     }
@@ -31,6 +33,10 @@ export class GoogleMapComponent implements MapComponent {
 
     setZoom(zoom: number) {
         this.map.setZoom(zoom);
+    }
+
+    setSatelliteView() {
+        this.map.setOptions({mapTypeId: 'satellite'} as any);
     }
 }
 
