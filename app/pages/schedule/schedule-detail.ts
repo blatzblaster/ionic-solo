@@ -55,4 +55,8 @@ export class ScheduleDetailPage {
     });
   }
 
+  openDetailUri() {
+    window.open(this.eventItem.detailuri, "blank");
+  }
+
 }

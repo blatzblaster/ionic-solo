@@ -21,8 +21,8 @@
     <ion-label>{{eventItem.organization.name}}</ion-label>
     <ion-label>{{ _dateSvc.toMonthAndDay(eventItem.start) }}</ion-label>
     <ion-label>{{eventItem.venue.name}}</ion-label>
+    <button (click)="openDetailUri()">Register</button>
  </div>
-
 
   <div class="desc">
     <ion-list-header>Description</ion-list-header>
