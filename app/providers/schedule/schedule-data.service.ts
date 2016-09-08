@@ -39,17 +39,17 @@ export interface ScheduleEvent {
 }
 
 export interface ScheduleAssignment {
-    vehicleNumber: number;
-    classModifier: string;
-    segment: string;
-    year: number;
-    lastName: string;
-    color: string;
-    firstName: string;
+    vehicleNumber?: number;
+    classModifier?: string;
+    segment?: string;
+    year?: number;
+    lastName?: string;
+    color?: string;
+    firstName?: string;
     class: string;
-    model: string;
-    sponsor: string;
-    make: string;
+    model?: string;
+    sponsor?: string;
+    make?: string;
 }
 
 export interface ApiResponseWrapper {

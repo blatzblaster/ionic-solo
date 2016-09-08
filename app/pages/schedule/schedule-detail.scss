@@ -25,4 +25,9 @@ ion-page.schedule-detail-page {
     ion-label[light] {
         color: #999;
     }
+
+    .drivers ion-list ion-list-header {
+        background: #DDD;
+        color: black;
+    }
 }

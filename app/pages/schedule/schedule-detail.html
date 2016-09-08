@@ -37,12 +37,17 @@
 
   <div class="drivers">
     <ion-list-header>Registered Drivers</ion-list-header>
-    <ion-list *ngIf="driversLoaded">
-      <ion-item *ngFor="let driver of drivers"  >
-        {{ driverLine1(driver) }} <br>
-        {{ driverLine2(driver) }}
-      </ion-item>
-    </ion-list>
+      <ion-list *ngIf="driversLoaded">
+        <div *ngFor="let driver of drivers">
+          <ion-item *ngIf="driver.firstName">
+            {{ driverLine1(driver) }} <br>
+            {{ driverLine2(driver) }}
+          </ion-item>
+          <ion-list-header *ngIf="!driver.firstName">
+            {{ driver.class }}
+          </ion-list-header>
+        </div>
+      </ion-list>
     <ion-spinner *ngIf="!driversLoaded"></ion-spinner>
   </div>
 </ion-content>

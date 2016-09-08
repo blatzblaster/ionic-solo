@@ -39,7 +39,7 @@ export class ScheduleDetailPage {
   }
 
   driverLine2(driver: ScheduleAssignment) {
-    return `${driver.class}`;
+    return `${driver.year} ${driver.make} ${driver.model}`;
   }
 
   loadDrivers() {
@@ -50,6 +50,18 @@ export class ScheduleDetailPage {
       this.drivers = drivers.sort((a, b) => {
           return a.class > b.class ? 1 : -1;
       });
+
+      let groupedList: ScheduleAssignment[] = [];
+
+      for (let i = 0; i < this.drivers.length; i++) {
+        let driverClass = this.drivers[i].class;
+        if (i === 0 || drivers[i].class !== drivers[i - 1].class)
+          groupedList.push({ class: driverClass });
+
+        groupedList.push(this.drivers[i]);
+      }
+
+      this.drivers = groupedList;
 
       this.driversLoaded = true;
     });
