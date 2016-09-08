@@ -7,4 +7,8 @@ export class DateService {
     toMonthAndDay(date: string) {
         return new Date(date).toLocaleDateString([], { month: "long", day: "numeric" });
     }
+
+    toMonthDayTime(date: string) {
+        return new Date(date).toLocaleTimeString([], { month: "long", day: "numeric" });
+    }
 }

@@ -17,12 +17,18 @@
     </sebm-google-map-marker>
   </sebm-google-map>
 
- <div padding class="event">
+  <ion-list-header>Overview</ion-list-header>
+  <div padding class="event">
+    <ion-label light>Organization</ion-label>
     <ion-label>{{eventItem.organization.name}}</ion-label>
+    <ion-label light>Date</ion-label>
     <ion-label>{{ _dateSvc.toMonthAndDay(eventItem.start) }}</ion-label>
+    <ion-label light>Location</ion-label>
     <ion-label>{{eventItem.venue.name}}</ion-label>
+    <ion-label light>Online Registration Ends</ion-label>
+    <ion-label>{{ _dateSvc.toMonthDayTime(eventItem.registration.end) }}</ion-label>
     <button (click)="openDetailUri()">Register</button>
- </div>
+  </div>
 
   <div class="desc">
     <ion-list-header>Description</ion-list-header>
