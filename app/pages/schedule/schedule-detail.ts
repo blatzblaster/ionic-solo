@@ -15,7 +15,7 @@ export class ScheduleDetailPage {
   @Input() eventItem: ScheduleEvent;
   @ViewChild(GoogleMapComponent) mapComponent: MapComponent;
 
-  private drivers: ScheduleAssignment[];
+  private drivers: ScheduleAssignment[] = [];
   private driversLoaded: boolean;
   constructor(private navCtrl: NavController,
     private _apiService: ApiScheduleDataService,
@@ -44,8 +44,10 @@ export class ScheduleDetailPage {
 
   loadDrivers() {
     this._apiService.getEventAttendees(this.eventItem.id).subscribe((drivers) => {
-      if (!drivers)
+      if (!drivers || !drivers.length) {
+        this.driversLoaded = true;
         return;
+      }
 
       this.drivers = drivers.sort((a, b) => {
           return a.class > b.class ? 1 : -1;

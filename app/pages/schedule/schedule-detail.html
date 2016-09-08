@@ -49,5 +49,6 @@
         </div>
       </ion-list>
     <ion-spinner *ngIf="!driversLoaded"></ion-spinner>
+    <ion-label *ngIf="driversLoaded && drivers && !drivers.length">No drivers found</ion-label>
   </div>
 </ion-content>
