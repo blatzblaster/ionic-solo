@@ -5,10 +5,12 @@ export class DateService {
     constructor() {}
 
     toMonthAndDay(date: string) {
-        return new Date(date).toLocaleDateString([], { month: "long", day: "numeric" });
+        let monthAndDay = new Date(date);
+        return `${monthAndDay.toLocaleDateString([], { month: "long" })} ${monthAndDay.getUTCDate()}`;
     }
 
     toMonthDayTime(date: string) {
-        return new Date(date).toLocaleTimeString([], { month: "long", day: "numeric" });
+        let monthAndDay = new Date(date);
+        return `${monthAndDay.toLocaleDateString([], { month: "long" })} ${monthAndDay.getUTCDate()} ${monthAndDay.toLocaleTimeString()}`;
     }
 }
