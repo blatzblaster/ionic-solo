@@ -16,7 +16,7 @@
 <ion-content padding>
   <ion-list>
     <ion-item>
-      <ion-label>Time to convert:</ion-label>
+      <ion-label>Enter raw time to convert:</ion-label>
       <ion-input item-right type="number" [(ngModel)]="entryTime"></ion-input>
     </ion-item>
     <ion-item>
@@ -32,8 +32,7 @@
       </ion-select>
     </ion-item>
     <ion-item>
-      <button block (click)="convertFromPaxTime()">Convert PAX Time</button>
-      <button block (click)="convertFromRawTime()">Convert Raw Time</button>
+      <button block (click)="convertFromRawTime()">Calculate</button>
     </ion-item>
   </ion-list>
 </ion-content>
